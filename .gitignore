@@ -1,0 +1,53 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.venv/
+venv/
+.env
+*.egg-info/
+dist/
+build/
+.mypy_cache/
+.ruff_cache/
+.pytest_cache/
+htmlcov/
+.coverage
+*.cover
+.superpowers/
+# uv
+.uv/
+
+# Local env (only .env.local permitted, never .env)
+.env.local
+!.env.local.example
+
+# IDE
+.vscode/settings.json
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Alembic
+alembic/versions/*.pyc
+
+# Secrets
+*.key
+*.pem
+*.p12
+secrets/
+
+# Docker volumes (local dev)
+pgdata/
+redisdata/
+
+# Spec build artifacts
+specs/**/.DS_Store
+
+node_modules/
+dist/
