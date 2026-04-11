@@ -1,7 +1,14 @@
+import Navbar from "./components/Navbar";
+
 function App() {
   return (
     <div className="min-h-screen bg-background text-text-primary">
-      <h1 className="text-4xl font-bold p-8">Portfolio</h1>
+      <Navbar />
+      <div className="pt-16">
+        <div className="h-screen flex items-center justify-center">
+          <p className="text-text-muted">Sections coming soon...</p>
+        </div>
+      </div>
     </div>
   );
 }
