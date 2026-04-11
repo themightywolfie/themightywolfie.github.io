@@ -5,6 +5,7 @@ import Experience from "./components/Experience";
 import ProjectsGrid from "./components/Projects/ProjectsGrid";
 import Skills from "./components/Skills";
 import Education from "./components/Education";
+import Contact from "./components/Contact";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
       <ProjectsGrid />
       <Skills />
       <Education />
+      <Contact />
     </div>
   );
 }
