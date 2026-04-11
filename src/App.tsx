@@ -4,6 +4,7 @@ import About from "./components/About";
 import Experience from "./components/Experience";
 import ProjectsGrid from "./components/Projects/ProjectsGrid";
 import Skills from "./components/Skills";
+import Education from "./components/Education";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
       <Experience />
       <ProjectsGrid />
       <Skills />
+      <Education />
     </div>
   );
 }
