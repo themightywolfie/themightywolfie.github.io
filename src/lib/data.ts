@@ -55,7 +55,7 @@ export const experience: ExperienceEntry[] = [
     role: "Senior Software Engineer",
     dates: "Nov 2024 – Present",
     location: "Ahmedabad, India",
-    logo: "https://logo.clearbit.com/simform.com",
+    logo: "/logos/simform.svg",
     logoFallback: "SF",
     bullets: [
       "Lead end-to-end AI product development across the full stack, driving architecture decisions, sprint planning, and hands-on coding for a portfolio of 6+ production AI applications built on FastAPI, React, LangChain, LlamaIndex, and Agno.",
@@ -70,7 +70,7 @@ export const experience: ExperienceEntry[] = [
     role: "Software Engineer",
     dates: "Dec 2021 – Nov 2024",
     location: "Ahmedabad, India",
-    logo: "https://logo.clearbit.com/crestdata.ai",
+    logo: "/logos/crestdata.png",
     logoFallback: "CD",
     bullets: [
       "Spearheaded the creation of an AI-driven internal tool using LLMs to analyse code reviews, enabling data-driven management decisions on code quality.",
@@ -208,7 +208,7 @@ export const education = {
   degree: "B.Tech, Computer Science and Engineering",
   graduation: "Jan 2022",
   cgpa: "9.2 / 10",
-  logo: "https://logo.clearbit.com/charusat.ac.in",
+  logo: "/logos/charusat.jpg",
   logoFallback: "CHARUSAT",
   certifications: [
     "Deep Learning Specialization",
