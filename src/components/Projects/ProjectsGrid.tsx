@@ -22,13 +22,13 @@ export default function ProjectsGrid() {
           {"// PROJECTS"}
         </motion.p>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 auto-rows-fr">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {projects.map((project) => (
             <div
               key={project.name}
               className={
                 project.featured
-                  ? "sm:col-span-2 lg:col-span-2 lg:row-span-2"
+                  ? "sm:col-span-2 lg:col-span-2"
                   : ""
               }
             >

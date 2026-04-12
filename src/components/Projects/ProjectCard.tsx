@@ -1,28 +1,50 @@
 import { motion } from "framer-motion";
+import { ExternalLink } from "lucide-react";
 import { useMotionVariants } from "../../lib/animations";
 import type { ProjectCard as ProjectCardType } from "../../lib/data";
 
 export default function ProjectCard({ project }: { project: ProjectCardType }) {
   const { fadeUp, scaleOnHover } = useMotionVariants();
 
-  return (
-    <motion.div
-      variants={fadeUp}
-      {...scaleOnHover}
-      className="bg-card border border-accent/10 rounded-xl overflow-hidden group cursor-default hover:border-accent/30 hover:shadow-[0_0_30px_rgba(99,102,241,0.1)] transition-all duration-300"
-    >
+  const content = (
+    <>
       {/* Top accent border */}
       <div className="h-0.5 bg-accent" />
 
-      <div className="p-6">
-        <div className="flex items-baseline justify-between mb-2">
+      <div className="p-6 flex flex-col h-full">
+        <div className="flex items-baseline justify-between mb-1">
           <h3 className="text-lg font-bold">{project.name}</h3>
-          <span className="text-text-muted text-xs font-mono">{project.dates}</span>
+          <div className="flex items-center gap-2">
+            {project.url && (
+              <ExternalLink
+                size={14}
+                className="text-text-muted group-hover:text-accent transition-colors"
+              />
+            )}
+            <span className="text-text-muted text-xs font-mono whitespace-nowrap">
+              {project.dates}
+            </span>
+          </div>
         </div>
 
-        <p className="text-text-secondary text-sm mb-4">{project.impact}</p>
+        <p className="text-accent text-sm font-medium mb-3">{project.impact}</p>
 
-        <div className="flex flex-wrap gap-2">
+        <p className="text-text-secondary text-sm mb-4">{project.description}</p>
+
+        {project.highlights.length > 0 && (
+          <ul className="space-y-1.5 mb-4 flex-1">
+            {project.highlights.map((h) => (
+              <li
+                key={h}
+                className="text-text-muted text-xs leading-relaxed pl-4 relative before:content-['▸'] before:absolute before:left-0 before:text-accent/60"
+              >
+                {h}
+              </li>
+            ))}
+          </ul>
+        )}
+
+        <div className="flex flex-wrap gap-2 mt-auto">
           {project.tags.map((tag) => (
             <span
               key={tag}
@@ -33,6 +55,34 @@ export default function ProjectCard({ project }: { project: ProjectCardType }) {
           ))}
         </div>
       </div>
+    </>
+  );
+
+  const cardClasses =
+    "bg-card border border-accent/10 rounded-xl overflow-hidden group hover:border-accent/30 hover:shadow-[0_0_30px_rgba(99,102,241,0.1)] transition-all duration-300 h-full flex flex-col";
+
+  if (project.url) {
+    return (
+      <motion.a
+        href={project.url}
+        target="_blank"
+        rel="noopener noreferrer"
+        variants={fadeUp}
+        {...scaleOnHover}
+        className={cardClasses + " cursor-pointer"}
+      >
+        {content}
+      </motion.a>
+    );
+  }
+
+  return (
+    <motion.div
+      variants={fadeUp}
+      {...scaleOnHover}
+      className={cardClasses + " cursor-default"}
+    >
+      {content}
     </motion.div>
   );
 }
