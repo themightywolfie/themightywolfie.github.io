@@ -1,4 +1,5 @@
 export interface ExperienceEntry {
+  id: string;
   company: string;
   role: string;
   dates: string;
@@ -17,6 +18,7 @@ export interface ProjectCard {
   tags: string[];
   featured?: boolean;
   url?: string;
+  experienceId: string;
 }
 
 export interface SkillCategory {
@@ -51,6 +53,7 @@ export const about = {
 
 export const experience: ExperienceEntry[] = [
   {
+    id: "simform",
     company: "Simform Software LLP",
     role: "Senior Software Engineer",
     dates: "Nov 2024 – Present",
@@ -66,6 +69,7 @@ export const experience: ExperienceEntry[] = [
     ],
   },
   {
+    id: "crestdata",
     company: "Crest Data",
     role: "Software Engineer",
     dates: "Dec 2021 – Nov 2024",
@@ -97,6 +101,7 @@ export const projects: ProjectCard[] = [
     tags: ["LangChain", "FastAPI", "React", "RAG", "Multi-Agent"],
     featured: true,
     url: "https://www.simform.com/accelerators/thoughtmesh/",
+    experienceId: "simform",
   },
   {
     name: "NeuVantage",
@@ -111,6 +116,7 @@ export const projects: ProjectCard[] = [
     ],
     tags: ["Neo4j", "Graphiti", "Azure AI Foundry"],
     url: "https://www.simform.com/accelerators/neuvantage/",
+    experienceId: "simform",
   },
   {
     name: "CodeTools",
@@ -125,6 +131,7 @@ export const projects: ProjectCard[] = [
     ],
     tags: ["TypeScript", "VS Code API", "LLMs"],
     url: "https://www.simform.com/accelerators/codetools/",
+    experienceId: "simform",
   },
   {
     name: "MedNoteDX",
@@ -139,6 +146,7 @@ export const projects: ProjectCard[] = [
     ],
     tags: ["MedGemma", "FastAPI", "RAG", "HIPAA"],
     url: "https://www.simform.com/accelerators/mednotedx/",
+    experienceId: "simform",
   },
   {
     name: "Splunk ITSI",
@@ -152,6 +160,7 @@ export const projects: ProjectCard[] = [
       "Authored 80+ automated test cases across Pytest, Gradle, and WebDriverIO",
     ],
     tags: ["React", "Splunk", "Python", "Observability"],
+    experienceId: "crestdata",
   },
   {
     name: "Mock Interview Bot",
@@ -164,6 +173,7 @@ export const projects: ProjectCard[] = [
       "Adaptive questioning engine with domain-specific evaluation rubrics",
     ],
     tags: ["LiveKit", "FastAPI", "LLMs"],
+    experienceId: "simform",
   },
   {
     name: "Financial Advisor",
@@ -176,6 +186,7 @@ export const projects: ProjectCard[] = [
       "RAG pipeline over financial documents for contextual advisory",
     ],
     tags: ["Azure AI Foundry", "CosmosDB", "RAG"],
+    experienceId: "simform",
   },
 ];
 

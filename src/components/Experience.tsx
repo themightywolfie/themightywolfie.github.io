@@ -64,7 +64,10 @@ export default function Experience() {
                 {/* Timeline dot */}
                 <div className="absolute left-[18px] top-2 w-4 h-4 rounded-full bg-accent/20 border-2 border-accent hidden md:block" />
 
-                <div className="bg-card border border-accent/10 rounded-xl p-6">
+                <div
+                  id={`experience-${entry.id}`}
+                  className="bg-card border border-accent/10 rounded-xl p-6 scroll-mt-24 target:border-accent/60 target:shadow-[0_0_40px_rgba(99,102,241,0.2)] transition-all duration-500"
+                >
                   <div className="flex items-start gap-4 mb-4">
                     <LogoWithFallback
                       src={entry.logo}

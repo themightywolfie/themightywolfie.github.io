@@ -1,7 +1,41 @@
+import type { MouseEvent } from "react";
 import { motion } from "framer-motion";
 import { ExternalLink } from "lucide-react";
 import { useMotionVariants } from "../../lib/animations";
+import { experience } from "../../lib/data";
 import type { ProjectCard as ProjectCardType } from "../../lib/data";
+
+function CompanyBadge({ experienceId }: { experienceId: string }) {
+  const entry = experience.find((e) => e.id === experienceId);
+  if (!entry) return null;
+
+  const handleClick = (e: MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    const target = document.getElementById(`experience-${entry.id}`);
+    if (target) {
+      target.scrollIntoView({ behavior: "smooth", block: "start" });
+      // Trigger :target pseudo-class by updating hash
+      history.replaceState(null, "", `#experience-${entry.id}`);
+    }
+  };
+
+  return (
+    <button
+      type="button"
+      onClick={handleClick}
+      className="inline-flex items-center gap-1.5 px-2 py-1 rounded-md bg-accent/5 border border-accent/20 hover:bg-accent/15 hover:border-accent/40 transition-colors text-xs text-text-secondary hover:text-text-primary w-fit cursor-pointer"
+      title={`Built at ${entry.company} — jump to experience`}
+    >
+      <img
+        src={entry.logo}
+        alt=""
+        className="w-3.5 h-3.5 rounded object-contain"
+      />
+      <span className="font-mono">@ {entry.company}</span>
+    </button>
+  );
+}
 
 export default function ProjectCard({ project }: { project: ProjectCardType }) {
   const { fadeUp, scaleOnHover } = useMotionVariants();
@@ -27,6 +61,10 @@ export default function ProjectCard({ project }: { project: ProjectCardType }) {
           </div>
         </div>
 
+        <div className="mb-3">
+          <CompanyBadge experienceId={project.experienceId} />
+        </div>
+
         <p className="text-accent text-sm font-medium mb-3">{project.impact}</p>
 
         <p className="text-text-secondary text-sm mb-4">{project.description}</p>
@@ -36,7 +74,7 @@ export default function ProjectCard({ project }: { project: ProjectCardType }) {
             {project.highlights.map((h) => (
               <li
                 key={h}
-                className="text-text-muted text-xs leading-relaxed pl-4 relative before:content-['▸'] before:absolute before:left-0 before:text-accent/60"
+                className="text-text-primary text-xs leading-relaxed pl-4 relative before:content-['▸'] before:absolute before:left-0 before:text-accent"
               >
                 {h}
               </li>
