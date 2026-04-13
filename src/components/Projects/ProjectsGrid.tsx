@@ -18,9 +18,9 @@ export default function ProjectsGrid() {
         animate={inView ? "visible" : "hidden"}
         className="max-w-6xl mx-auto px-6"
       >
-        <motion.p variants={fadeUp} className="font-mono text-text-muted text-sm mb-12">
+        <motion.h2 variants={fadeUp} className="font-mono text-text-primary text-2xl mb-12">
           {"// PROJECTS"}
-        </motion.p>
+        </motion.h2>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {projects.map((project) => (

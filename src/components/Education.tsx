@@ -46,9 +46,9 @@ export default function Education() {
         animate={inView ? "visible" : "hidden"}
         className="max-w-6xl mx-auto px-6"
       >
-        <motion.p variants={fadeUp} className="font-mono text-text-muted text-sm mb-12">
+        <motion.h2 variants={fadeUp} className="font-mono text-text-primary text-2xl mb-12">
           {"// EDUCATION"}
-        </motion.p>
+        </motion.h2>
 
         <motion.div
           variants={fadeUp}

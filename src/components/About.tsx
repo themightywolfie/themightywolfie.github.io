@@ -55,9 +55,9 @@ export default function About() {
         animate={inView ? "visible" : "hidden"}
         className="max-w-6xl mx-auto px-6"
       >
-        <motion.p variants={fadeUp} className="font-mono text-text-muted text-sm mb-8">
+        <motion.h2 variants={fadeUp} className="font-mono text-text-primary text-2xl mb-8">
           {"// ABOUT"}
-        </motion.p>
+        </motion.h2>
 
         <div className="grid md:grid-cols-2 gap-12 items-start">
           <motion.div variants={fadeUp}>
