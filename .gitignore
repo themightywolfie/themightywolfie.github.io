@@ -52,3 +52,6 @@ specs/**/.DS_Store
 node_modules/
 dist/
 *.local
+
+# Playwright test artifacts
+.playwright-mcp/

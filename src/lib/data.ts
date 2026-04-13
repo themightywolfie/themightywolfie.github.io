@@ -38,7 +38,7 @@ export const hero = {
   name: "Samaksh Khatri",
   title: "Senior AI Engineer",
   tagline: "Building production AI at scale — RAG · Agents · Full Stack",
-  techPills: ["Python", "LangChain", "FastAPI", "React", "Azure", "AWS"],
+  techPills: ["Python", "LangChain", "FastAPI", "React", "Azure", "Agentic Workflows"],
 };
 
 export const about = {
@@ -163,6 +163,21 @@ export const projects: ProjectCard[] = [
     experienceId: "crestdata",
   },
   {
+    name: "MR Analyzer",
+    dates: "2023 – 2024",
+    impact: "Sentiment-driven code review analytics for engineering leadership",
+    description:
+      "Internal AI tool that surfaces PR review sentiment across GitHub, Bitbucket, and GitLab in a unified dashboard — giving upper management visibility into project code quality and developer metrics without logging into individual repo hubs.",
+    highlights: [
+      "Fine-tuned LLM classifier over custom sentiment categories — Critical, Changes Requested, Discussions",
+      "Hand-labelled, domain-specific training dataset built from real PR review comments",
+      "Interactive dashboards with filters by project, contributor, and reviewer",
+      "Unified ingestion across GitHub, Bitbucket, and GitLab APIs",
+    ],
+    tags: ["LLMs", "Fine-tuning", "NLP", "React", "Analytics"],
+    experienceId: "crestdata",
+  },
+  {
     name: "Mock Interview Bot",
     dates: "Nov 2024 – Present",
     impact: "Automated 90% of internal mock interviews with real-time AI",
@@ -219,14 +234,15 @@ export const education = {
   degree: "B.Tech, Computer Science and Engineering",
   graduation: "Jan 2022",
   cgpa: "9.2 / 10",
-  logo: "/logos/charusat.jpg",
+  logo: "/logos/charusat.png",
   logoFallback: "CHARUSAT",
-  certifications: [
-    "Deep Learning Specialization",
-    "Google IT Automation with Python",
-    "Industrial IoT with Google Cloud Platform",
-  ],
 };
+
+export const certifications: { name: string; issuer: string }[] = [
+  { name: "Deep Learning Specialization", issuer: "DeepLearning.AI · Coursera" },
+  { name: "Google IT Automation with Python", issuer: "Google · Coursera" },
+  { name: "Industrial IoT on Google Cloud Platform", issuer: "Google Cloud · Coursera" },
+];
 
 export const contact = {
   cta: "Open to senior AI roles and consulting engagements",

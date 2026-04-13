@@ -2,7 +2,6 @@ import { useRef, useState } from "react";
 import { motion, useInView } from "framer-motion";
 import { useMotionVariants } from "../lib/animations";
 import { education } from "../lib/data";
-import { Award } from "lucide-react";
 
 function LogoWithFallback({
   src,
@@ -17,7 +16,7 @@ function LogoWithFallback({
 
   if (failed) {
     return (
-      <div className="w-12 h-12 rounded-lg bg-accent/10 border border-accent/20 flex items-center justify-center text-accent font-mono font-bold text-[8px]">
+      <div className="w-16 h-16 rounded-lg bg-accent/10 border border-accent/20 flex items-center justify-center text-accent font-mono font-bold text-[8px] shrink-0">
         {fallback}
       </div>
     );
@@ -27,7 +26,7 @@ function LogoWithFallback({
     <img
       src={src}
       alt={alt}
-      className="w-12 h-12 rounded-lg bg-card object-contain"
+      className="w-16 h-16 rounded-lg bg-white object-contain p-2 shrink-0"
       onError={() => setFailed(true)}
     />
   );
@@ -55,7 +54,7 @@ export default function Education() {
           variants={fadeUp}
           className="bg-card border border-accent/10 rounded-xl p-6 max-w-2xl"
         >
-          <div className="flex items-start gap-4 mb-4">
+          <div className="flex items-start gap-4">
             <LogoWithFallback
               src={education.logo}
               fallback={education.logoFallback}
@@ -67,23 +66,6 @@ export default function Education() {
               <p className="text-text-muted text-xs mt-1">
                 {education.graduation} · {education.location} · CGPA: {education.cgpa}
               </p>
-            </div>
-          </div>
-
-          <div className="mt-4 pt-4 border-t border-accent/10">
-            <div className="flex items-center gap-2 mb-3">
-              <Award size={14} className="text-accent" />
-              <p className="font-mono text-text-muted text-xs">Certifications</p>
-            </div>
-            <div className="flex flex-wrap gap-2">
-              {education.certifications.map((cert) => (
-                <span
-                  key={cert}
-                  className="px-3 py-1 text-xs border border-accent/20 rounded-full text-text-secondary"
-                >
-                  {cert}
-                </span>
-              ))}
             </div>
           </div>
         </motion.div>

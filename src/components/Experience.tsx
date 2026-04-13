@@ -16,7 +16,7 @@ function LogoWithFallback({
 
   if (failed) {
     return (
-      <div className="w-12 h-12 rounded-lg bg-accent/10 border border-accent/20 flex items-center justify-center text-accent font-mono font-bold text-sm">
+      <div className="w-16 h-16 rounded-lg bg-accent/10 border border-accent/20 flex items-center justify-center text-accent font-mono font-bold text-sm shrink-0">
         {fallback}
       </div>
     );
@@ -26,7 +26,7 @@ function LogoWithFallback({
     <img
       src={src}
       alt={alt}
-      className="w-12 h-12 rounded-lg bg-card object-contain"
+      className="w-16 h-16 rounded-lg bg-white object-contain p-2 shrink-0"
       onError={() => setFailed(true)}
     />
   );

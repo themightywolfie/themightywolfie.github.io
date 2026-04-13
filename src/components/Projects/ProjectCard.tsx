@@ -30,7 +30,7 @@ function CompanyBadge({ experienceId }: { experienceId: string }) {
       <img
         src={entry.logo}
         alt=""
-        className="w-3.5 h-3.5 rounded object-contain"
+        className="w-4 h-4 rounded bg-white object-contain p-0.5"
       />
       <span className="font-mono">@ {entry.company}</span>
     </button>
