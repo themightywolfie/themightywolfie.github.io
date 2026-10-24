@@ -3,6 +3,7 @@ import { motion, useInView } from "framer-motion";
 import { useMotionVariants } from "../lib/animations";
 import { contact } from "../lib/data";
 import { Mail } from "lucide-react";
+import SectionHeading from "./SectionHeading";
 
 const LinkedinIcon = ({ size = 16 }: { size?: number }) => (
   <svg
@@ -36,50 +37,56 @@ export default function Contact() {
   const inView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="contact" className="py-24">
+    <section id="contact" className="py-12 md:py-16 scroll-mt-16">
       <motion.div
         ref={ref}
         variants={staggerContainer}
         initial="hidden"
         animate={inView ? "visible" : "hidden"}
-        className="max-w-6xl mx-auto px-6"
+        className="max-w-6xl mx-auto px-4 sm:px-6"
       >
-        <motion.h2 variants={fadeUp} className="font-mono text-text-primary text-2xl mb-12">
-          {"// CONTACT"}
-        </motion.h2>
+        <SectionHeading>Contact</SectionHeading>
 
         <motion.div
           variants={fadeUp}
-          className="bg-card border border-accent/10 rounded-xl p-8 max-w-xl mx-auto text-center"
+          className="relative overflow-hidden rounded-[1.75rem] p-8 md:p-12 text-white bg-gradient-to-br from-accent via-accent-strong to-[#4c1d95] shadow-[0_12px_40px_rgba(124,58,237,0.25)]"
         >
-          <p className="text-text-secondary text-lg mb-8">{contact.cta}</p>
+          <div className="absolute -right-24 -top-24 w-72 h-72 rounded-full bg-white/10 blur-2xl" aria-hidden="true" />
+          <div className="relative flex flex-col md:flex-row md:items-end md:justify-between gap-8">
+            <div className="max-w-lg">
+              <p className="text-3xl md:text-4xl font-semibold tracking-tight leading-tight mb-3">
+                Let's build something together.
+              </p>
+              <p className="text-white/80 text-lg">{contact.cta}</p>
+            </div>
 
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <a
-              href={`mailto:${contact.email}`}
-              className="flex items-center gap-2 px-5 py-2.5 bg-accent text-white rounded-lg hover:bg-accent/90 transition-colors"
-            >
-              <Mail size={16} />
-              <span className="text-sm">Email Me</span>
-            </a>
-            <a
-              href={contact.linkedin}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 px-5 py-2.5 border border-accent/30 text-accent rounded-lg hover:bg-accent/10 transition-colors"
-            >
-              <LinkedinIcon size={16} />
-              <span className="text-sm">LinkedIn</span>
-            </a>
-            <a
-              href={contact.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 px-5 py-2.5 border border-accent/30 text-accent rounded-lg hover:bg-accent/10 transition-colors"
-            >
-              <GithubIcon size={16} />
-              <span className="text-sm">GitHub</span>
-            </a>
+            <div className="flex flex-col sm:flex-row gap-3 shrink-0">
+              <a
+                href={`mailto:${contact.email}`}
+                className="flex items-center justify-center gap-2 px-5 py-3 bg-white text-accent-strong font-medium rounded-full hover:bg-white/90 transition-colors"
+              >
+                <Mail size={16} />
+                <span className="text-sm">Email Me</span>
+              </a>
+              <a
+                href={contact.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center gap-2 px-5 py-3 bg-white/10 border border-white/25 text-white font-medium rounded-full hover:bg-white/20 transition-colors"
+              >
+                <LinkedinIcon size={16} />
+                <span className="text-sm">LinkedIn</span>
+              </a>
+              <a
+                href={contact.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center gap-2 px-5 py-3 bg-white/10 border border-white/25 text-white font-medium rounded-full hover:bg-white/20 transition-colors"
+              >
+                <GithubIcon size={16} />
+                <span className="text-sm">GitHub</span>
+              </a>
+            </div>
           </div>
         </motion.div>
       </motion.div>

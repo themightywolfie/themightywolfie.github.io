@@ -17,9 +17,9 @@ function App() {
       <About />
       <Experience />
       <ProjectsGrid />
+      <Certifications />
       <Skills />
       <Education />
-      <Certifications />
       <Contact />
       <Footer />
     </div>

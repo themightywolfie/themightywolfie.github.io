@@ -2,6 +2,7 @@ import { useRef, useState } from "react";
 import { motion, useInView } from "framer-motion";
 import { useMotionVariants } from "../lib/animations";
 import { education } from "../lib/data";
+import SectionHeading from "./SectionHeading";
 
 function LogoWithFallback({
   src,
@@ -16,7 +17,7 @@ function LogoWithFallback({
 
   if (failed) {
     return (
-      <div className="w-16 h-16 rounded-lg bg-accent/10 border border-accent/20 flex items-center justify-center text-accent font-mono font-bold text-[8px] shrink-0">
+      <div className="w-14 h-14 rounded-2xl bg-accent-soft flex items-center justify-center text-accent font-bold text-[8px] shrink-0">
         {fallback}
       </div>
     );
@@ -26,7 +27,7 @@ function LogoWithFallback({
     <img
       src={src}
       alt={alt}
-      className="w-16 h-16 rounded-lg bg-white object-contain p-2 shrink-0"
+      className="w-14 h-14 rounded-2xl border border-border bg-white object-contain p-1.5 shrink-0"
       onError={() => setFailed(true)}
     />
   );
@@ -38,37 +39,44 @@ export default function Education() {
   const inView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="education" className="py-24 bg-surface">
+    <section id="education" className="py-12 md:py-16 scroll-mt-16">
       <motion.div
         ref={ref}
         variants={staggerContainer}
         initial="hidden"
         animate={inView ? "visible" : "hidden"}
-        className="max-w-6xl mx-auto px-6"
+        className="max-w-6xl mx-auto px-4 sm:px-6"
       >
-        <motion.h2 variants={fadeUp} className="font-mono text-text-primary text-2xl mb-12">
-          {"// EDUCATION"}
-        </motion.h2>
+        <SectionHeading>Education</SectionHeading>
 
-        <motion.div
-          variants={fadeUp}
-          className="bg-card border border-accent/10 rounded-xl p-6 max-w-2xl"
-        >
-          <div className="flex items-start gap-4">
-            <LogoWithFallback
-              src={education.logo}
-              fallback={education.logoFallback}
-              alt={education.institution}
-            />
-            <div>
-              <h3 className="text-lg font-bold">{education.institution}</h3>
-              <p className="text-accent font-mono text-sm">{education.degree}</p>
-              <p className="text-text-muted text-xs mt-1">
-                {education.graduation} · {education.location} · CGPA: {education.cgpa}
-              </p>
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+          <motion.div variants={fadeUp} className="tile md:col-span-3 p-6 md:p-8">
+            <div className="flex items-start gap-4">
+              <LogoWithFallback
+                src={education.logo}
+                fallback={education.logoFallback}
+                alt={education.institution}
+              />
+              <div>
+                <h3 className="text-lg font-semibold leading-snug">{education.institution}</h3>
+                <p className="text-accent text-sm font-medium">{education.degree}</p>
+                <p className="text-text-muted text-xs mt-1">
+                  {education.graduation} · {education.location}
+                </p>
+              </div>
             </div>
-          </div>
-        </motion.div>
+          </motion.div>
+
+          <motion.div
+            variants={fadeUp}
+            className="tile p-6 flex flex-col justify-between gap-4"
+          >
+            <p className="text-text-muted text-sm font-medium">CGPA</p>
+            <p className="text-4xl font-bold tracking-tight text-accent">
+              {education.cgpa}
+            </p>
+          </motion.div>
+        </div>
       </motion.div>
     </section>
   );

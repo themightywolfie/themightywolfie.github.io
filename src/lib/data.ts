@@ -17,6 +17,7 @@ export interface ProjectCard {
   highlights: string[];
   tags: string[];
   featured?: boolean;
+  badge?: string;
   url?: string;
   experienceId: string;
 }
@@ -24,30 +25,63 @@ export interface ProjectCard {
 export interface SkillCategory {
   label: string;
   skills: string[];
+  wide?: boolean;
+}
+
+export interface Certification {
+  name: string;
+  issuer: string;
+  issued?: string;
+  description?: string;
+  url: string;
+  featured?: boolean;
 }
 
 export const navLinks = [
   { label: "About", href: "#about" },
   { label: "Experience", href: "#experience" },
   { label: "Projects", href: "#projects" },
+  { label: "Certifications", href: "#certifications" },
   { label: "Skills", href: "#skills" },
   { label: "Contact", href: "#contact" },
 ];
 
 export const hero = {
   name: "Samaksh Khatri",
-  title: "Senior AI Engineer",
-  tagline: "Building production AI at scale — RAG · Agents · Full Stack",
-  techPills: ["Python", "LangChain", "FastAPI", "React", "Azure", "Agentic Workflows"],
+  title: "AI Engineering Lead · Solutions Architect",
+  tagline: "I shape enterprise AI solutions with clients in pre-sales, then lead the engineering teams that ship them.",
+  techPills: ["Python", "LangChain", "Azure AI Foundry", "Microsoft Fabric", "Copilot Studio", "MCP", "Multi-Agent Systems"],
 };
 
 export const about = {
-  bio: "I lead end-to-end AI product development across the full stack — from architecture and sprint planning to hands-on coding. With 3+ years shipping production AI systems, I specialise in RAG pipelines, multi-agent workflows, and translating complex technical capabilities into solutions that win clients.",
+  bio: "AI engineer and technical lead with 4+ years building enterprise AI solutions, LLM-powered applications, and full-stack products. I work across multi-agent orchestration, RAG, and cloud-native AI architecture — and I'm equally at home in front of a client, translating business requirements into solution architectures, proofs of concept, and demos that win the deal.",
   stats: [
-    { value: "6+", label: "AI Apps Built" },
-    { value: "4+", label: "Client Acquisitions" },
-    { value: "3+", label: "Years Experience" },
-    { value: "9.2", label: "CGPA" },
+    { value: "18", label: "AI Accelerators Delivered" },
+    { value: "15+", label: "Client Acquisitions Supported" },
+    { value: "10", label: "Engineers Led" },
+    { value: "4+", label: "Years Experience" },
+  ],
+  pillars: [
+    {
+      title: "Solutions Consulting",
+      summary: "Turning business problems into AI solution architectures that clients buy into.",
+      points: [
+        "Solution architectures and technical proposals",
+        "Proofs of concept and live product demonstrations",
+        "Supported 15+ client acquisitions across 5+ domains",
+        "Delivered Microsoft's Agent in a Day for Copilot Studio partners",
+      ],
+    },
+    {
+      title: "Engineering Leadership",
+      summary: "Owning architecture and delivery for a team shipping production AI.",
+      points: [
+        "Lead engineer for 18 AI accelerators in Labs & Innovations",
+        "Architecture decisions, sprint planning, and code reviews",
+        "Mentoring a team of 10 engineers on scalable design patterns",
+        "Driving organisation-wide AI adoption and enablement",
+      ],
+    },
   ],
 };
 
@@ -61,11 +95,12 @@ export const experience: ExperienceEntry[] = [
     logo: "/logos/simform.svg",
     logoFallback: "SF",
     bullets: [
-      "Lead end-to-end AI product development across the full stack, driving architecture decisions, sprint planning, and hands-on coding for a portfolio of 6+ production AI applications built on FastAPI, React, LangChain, LlamaIndex, and Agno.",
-      "Serve as technical lead on pre-sales engagements — translating client requirements into solution proposals, delivering live demos, and collaborating with the sales team to convert prospects; contributed to 4+ successful client acquisitions.",
-      "Spearheaded the development of ThoughtMesh, a modular no-code multi-agent workflow builder supporting 30+ enterprise service integrations and multiple LLM providers.",
-      "Led development of 6+ AI-powered RAG applications, designing pluggable ingestion pipelines and vector-based retrieval systems for domain-specific use cases across Product R&D, Finance and Deep Research.",
-      "Mentored junior engineers through code reviews, pair programming sessions, and technical knowledge-sharing; established team-wide best practices for prompt engineering and agent design.",
+      "Lead engineer within the Labs & Innovations team, driving architecture, development, and delivery of 18 scalable AI-powered accelerators across enterprise use cases using Generative AI, agentic workflows, and cloud-native technologies.",
+      "Drive technical solutioning and client-facing pre-sales — translating business requirements into solution architectures, technical proposals, proofs of concept, and product demonstrations that supported 15+ client acquisitions.",
+      "Provide technical leadership across AI initiatives through architecture decisions, engineering guidance, code reviews, sprint planning, and mentoring a team of 10 engineers.",
+      "Architect multi-agent systems, RAG pipelines, and enterprise AI applications integrating LLM providers, knowledge retrieval, external tools, and enterprise services across 5+ domains.",
+      "Lead solution engineering across LangChain, Azure AI Foundry, Microsoft Copilot Studio Agents, MCP servers, CopilotKit, FastAPI, Microsoft Fabric, Qdrant, PostgreSQL, and Redis.",
+      "Drive organisation-wide AI adoption through knowledge-sharing and enablement, including delivering Microsoft's Agent in a Day session for partners building solutions on Copilot Studio.",
     ],
   },
   {
@@ -79,7 +114,7 @@ export const experience: ExperienceEntry[] = [
     bullets: [
       "Spearheaded the creation of an AI-driven internal tool using LLMs to analyse code reviews, enabling data-driven management decisions on code quality.",
       "Developed and optimised IT Service Intelligence (ITSI), Splunk's Observability product, enhancing proactive IT service monitoring and achieving a 30% increase in cross-functional collaboration through new React-based UI features.",
-      "Authored and executed 80+ automated test cases (Pytest, Gradle, WebDriverIO) and resolved 60+ customer escalations with a 95% closure rate.",
+      "Authored and executed 80+ automated test cases (Pytest, Gradle, WebDriverIO) and resolved 60+ customer escalations with a 95% closure rate, earning Crest Achievement Program recognition for resolving particularly difficult escalations.",
       "Led seamless integrations such as PagerDuty with ITSI and fixed 40+ bugs, significantly improving incident management and user experience.",
     ],
   },
@@ -89,48 +124,53 @@ export const projects: ProjectCard[] = [
   {
     name: "ThoughtMesh",
     dates: "Nov 2024 – Present",
-    impact: "No-code multi-agent platform — reduce GenAI dev time by up to 80%",
+    impact: "Low-code/no-code GenAI platform for enterprise agents and multi-agent workflows",
     description:
-      "Enterprise no-code platform for building and orchestrating AI agents with drag-and-drop workflows, integrated RAG, and namespace-driven governance.",
+      "Modular platform for building, orchestrating, and deploying enterprise AI agents — 30+ enterprise service integrations and LLM providers including OpenAI, Anthropic, Hugging Face, OpenRouter, and AWS Bedrock.",
     highlights: [
-      "Visual workflow builder for single-agent, chatbot, and multi-agent LLM flows",
-      "Vectorisation pipeline with chunking, embeddings, and semantic search",
-      "Corrective RAG with live validation, ranking, and continuous feedback loops",
-      "Namespace-driven access control propagated through downstream workflows",
+      "Reusable agent orchestration patterns for retrieval, classification, validation, and process automation",
+      "Modular RAG pipelines over structured and unstructured enterprise data",
+      "Agent memory, knowledge grounding, access control, and secrets management",
+      "Secure deployment across cloud, self-hosted, and hybrid environments",
     ],
     tags: ["LangChain", "FastAPI", "React", "RAG", "Multi-Agent"],
     featured: true,
+    badge: "Azure IP Co-Sell Eligible",
     url: "https://www.simform.com/accelerators/thoughtmesh/",
     experienceId: "simform",
   },
   {
     name: "NeuVantage",
     dates: "Aug 2025 – Present",
-    impact: "AI-powered legacy modernisation — 40% faster migration cycles",
+    impact: "AI-powered application modernisation and migration strategy",
     description:
-      "Automated deep code analysis accelerator that maps applications to the 5R strategy and generates cloud-ready target architecture blueprints.",
+      "Accelerator on Microsoft AI Foundry that analyses legacy systems and generates prioritised refactoring, cloud migration, and microservices decomposition recommendations.",
     highlights: [
-      "Semantic code chunking to break complex codebases into analysable units",
-      "AI-assisted discovery of hidden dependencies, redundant code, and risk areas",
-      "Generates target architecture diagrams and tailored transformation paths",
+      "Modular analysis pipelines over codebases, architecture artefacts, and dependencies",
+      "Neo4j graph vector layer modelling services and modernisation pathways",
+      "Graphiti agentic memory for persistent context across multi-step reasoning",
     ],
-    tags: ["Neo4j", "Graphiti", "Azure AI Foundry"],
+    tags: ["Azure AI Foundry", "Neo4j", "Graphiti"],
+    badge: "Azure IP Co-Sell Eligible",
     url: "https://www.simform.com/accelerators/neuvantage/",
     experienceId: "simform",
   },
   {
-    name: "CodeTools",
-    dates: "Nov 2024 – Present",
-    impact: "AI-powered VS Code extension for full-workspace code intelligence",
+    name: "TrueMorph",
+    dates: "Jun 2025 – Present",
+    impact: "AI-powered data modernisation on Microsoft Fabric",
     description:
-      "VS Code extension with customisable, context-aware AI agents that help developers, PMs, and QA teams understand, design, and deliver software faster.",
+      "Accelerator that migrates legacy data platforms into governed, scalable, AI-ready data ecosystems on Microsoft Fabric.",
     highlights: [
-      "Natural language Q&A across entire projects without requiring open files",
-      "Auto-generates system architecture diagrams from code",
-      "Analyses Terraform, CloudFormation, and ARM templates for misconfigurations",
+      "Metadata-driven discovery of schemas, lineage, quality patterns, and business rules",
+      "Ontology-driven understanding linking business concepts to data entities",
+      "AI-assisted quality monitoring and self-healing for schema drift and anomalies",
+      "Human-in-the-loop approvals, lineage tracking, and PII/PHI detection and masking",
     ],
-    tags: ["TypeScript", "VS Code API", "LLMs"],
-    url: "https://www.simform.com/accelerators/codetools/",
+    tags: ["Microsoft Fabric", "Data Governance", "LLMs"],
+    featured: true,
+    badge: "Azure IP Co-Sell Eligible",
+    url: "https://www.simform.com/accelerators/truemorph/",
     experienceId: "simform",
   },
   {
@@ -149,6 +189,21 @@ export const projects: ProjectCard[] = [
     experienceId: "simform",
   },
   {
+    name: "CodeTools",
+    dates: "Nov 2024 – Present",
+    impact: "AI-powered VS Code extension for full-workspace code intelligence",
+    description:
+      "VS Code extension with customisable, context-aware AI agents that help developers, PMs, and QA teams understand, design, and deliver software faster.",
+    highlights: [
+      "Natural language Q&A across entire projects without requiring open files",
+      "Auto-generates system architecture diagrams from code",
+      "Analyses Terraform, CloudFormation, and ARM templates for misconfigurations",
+    ],
+    tags: ["TypeScript", "VS Code API", "LLMs"],
+    url: "https://www.simform.com/accelerators/codetools/",
+    experienceId: "simform",
+  },
+  {
     name: "Splunk ITSI",
     dates: "Dec 2021 – Nov 2024",
     impact: "AIOps platform with predictive alerting and KPI-driven triage",
@@ -163,6 +218,19 @@ export const projects: ProjectCard[] = [
     experienceId: "crestdata",
   },
   {
+    name: "Mock Interview Bot",
+    dates: "Nov 2024 – Present",
+    impact: "Automated 90% of internal mock interviews with real-time AI",
+    description:
+      "Real-time voice-driven AI interviewer for structured mock interviews with adaptive questioning and instant feedback.",
+    highlights: [
+      "Real-time voice interaction via LiveKit WebRTC infrastructure",
+      "Adaptive questioning engine with domain-specific evaluation rubrics",
+    ],
+    tags: ["LiveKit", "FastAPI", "LLMs"],
+    experienceId: "simform",
+  },
+  {
     name: "MR Analyzer",
     dates: "2023 – 2024",
     impact: "Sentiment-driven code review analytics for engineering leadership",
@@ -175,20 +243,8 @@ export const projects: ProjectCard[] = [
       "Unified ingestion across GitHub, Bitbucket, and GitLab APIs",
     ],
     tags: ["LLMs", "Fine-tuning", "NLP", "React", "Analytics"],
+    featured: true,
     experienceId: "crestdata",
-  },
-  {
-    name: "Mock Interview Bot",
-    dates: "Nov 2024 – Present",
-    impact: "Automated 90% of internal mock interviews with real-time AI",
-    description:
-      "Real-time voice-driven AI interviewer for structured mock interviews with adaptive questioning and instant feedback.",
-    highlights: [
-      "Real-time voice interaction via LiveKit WebRTC infrastructure",
-      "Adaptive questioning engine with domain-specific evaluation rubrics",
-    ],
-    tags: ["LiveKit", "FastAPI", "LLMs"],
-    experienceId: "simform",
   },
   {
     name: "Financial Advisor",
@@ -207,24 +263,31 @@ export const projects: ProjectCard[] = [
 
 export const skillCategories: SkillCategory[] = [
   {
-    label: "AI & ML",
-    skills: ["Python", "RAG", "LangChain", "LlamaIndex", "Agno", "Qdrant", "AI Agents", "PyTorch", "TensorFlow"],
+    label: "AI & Agents",
+    skills: ["Python", "RAG", "LangChain", "LlamaIndex", "Agno", "AI Agents", "MCP", "Docling", "PyTorch", "TensorFlow"],
+    wide: true,
   },
   {
-    label: "Backend",
-    skills: ["FastAPI", "REST API", "MySQL", "MongoDB", "PostgreSQL"],
+    label: "Microsoft & Cloud",
+    skills: ["Microsoft Fabric", "Azure AI Foundry", "Copilot Studio", "Microsoft Azure", "AWS", "LiveKit"],
+  },
+  {
+    label: "Pre-Sales & Leadership",
+    skills: ["Technical Pre-Sales", "Solution Architecture", "Proofs of Concept", "Client Demos", "Technical Proposals", "Sprint Planning", "Code Reviews", "Mentoring"],
+    wide: true,
+  },
+  {
+    label: "Backend & Data",
+    skills: ["FastAPI", "REST API", "PostgreSQL", "MySQL", "MongoDB", "Qdrant", "Redis", "Neo4j"],
   },
   {
     label: "Frontend",
-    skills: ["React.js", "TypeScript", "JavaScript"],
-  },
-  {
-    label: "Cloud & Infra",
-    skills: ["Microsoft Azure", "AWS", "Neo4j", "Graphiti", "LiveKit"],
+    skills: ["React.js", "TypeScript", "JavaScript", "CopilotKit"],
   },
   {
     label: "Industry",
-    skills: ["Deep Learning", "Machine Learning", "System Design", "Observability", "Pre-Sales Engineering"],
+    skills: ["Deep Learning", "Machine Learning", "System Design", "Observability", "Automation", "Internet of Things", "Edge Computing"],
+    wide: true,
   },
 ];
 
@@ -238,14 +301,30 @@ export const education = {
   logoFallback: "CHARUSAT",
 };
 
-export const certifications: { name: string; issuer: string }[] = [
-  { name: "Deep Learning Specialization", issuer: "DeepLearning.AI · Coursera" },
-  { name: "Google IT Automation with Python", issuer: "Google · Coursera" },
-  { name: "Industrial IoT on Google Cloud Platform", issuer: "Google Cloud · Coursera" },
+export const certifications: Certification[] = [
+  {
+    name: "Claude Certified Architect – Foundations",
+    issuer: "Anthropic",
+    issued: "Sep 2026",
+    description:
+      "Designing and building production-grade applications with Claude using Claude Code, the Claude Agent SDK, the Claude API, and MCP.",
+    url: "https://www.credly.com/badges/b5a7b2af-25f2-4858-bcfb-adb6aa2ec1ec/public_url",
+    featured: true,
+  },
+  {
+    name: "Google IT Automation with Python",
+    issuer: "Google · Coursera",
+    url: "https://coursera.org/share/fd2cb147eee7d9135888d4816888bf1f",
+  },
+  {
+    name: "Deep Learning Specialization",
+    issuer: "DeepLearning.AI · Coursera",
+    url: "https://coursera.org/share/0578c3f9832cbef9a34b99ea086f2e4f",
+  },
 ];
 
 export const contact = {
-  cta: "Open to senior AI roles and consulting engagements",
+  cta: "Open to AI engineering lead and pre-sales solutions roles",
   email: "samakshkhatri14@gmail.com",
   linkedin: "https://linkedin.com/in/samakshkhatri",
   github: "https://github.com/themightywolfie",
